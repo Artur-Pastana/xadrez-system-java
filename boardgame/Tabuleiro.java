@@ -24,4 +24,13 @@ public class Tabuleiro {
     public void setLinhas(int linhas) {
         this.linhas = linhas;
     }
+
+    public Peca peca(int linha, int coluna) {
+        return pecas[linha][coluna];
+    }
+
+    //metodo para retornar uma posicao do tabuleiro
+    public Peca peca(Posicao posicao){
+        return pecas[posicao.getLinha()][posicao.getColuna()];
+    }
 }
