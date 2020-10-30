@@ -13,8 +13,8 @@ public class Programa {
 
         UI.printTabuleiro(partidaXadrez.getPecas());
         System.out.println();
-        
-        //System.out.println('c'-'a');
-        
+
+        // System.out.println('c'-'a');
+
     }
 }
