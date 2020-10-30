@@ -1,5 +1,7 @@
 package secao16.boardgame;
 
+import secao16.xadrez.PecaXadrez;
+
 public class Tabuleiro {
     private int linhas;
     private int colunas;
@@ -33,4 +35,10 @@ public class Tabuleiro {
     public Peca peca(Posicao posicao){
         return pecas[posicao.getLinha()][posicao.getColuna()];
     }
+
+    public void colocarPeca(Peca peca, Posicao posicao) {
+        this.pecas[posicao.getLinha()][posicao.getColuna()] = peca;
+        peca.posicao = posicao;
+    }
+    
 }

@@ -1,12 +1,18 @@
 package secao16.xadrez;
 
+import java.awt.Color;
+
+import secao16.boardgame.Posicao;
 import secao16.boardgame.Tabuleiro;
+import secao16.xadrez.pecas.Rei;
+import secao16.xadrez.pecas.Torre;
 
 public class PartidaXadrez {
     private Tabuleiro tabuleiro;
 
     public PartidaXadrez(){
         this.tabuleiro = new Tabuleiro(8, 8);
+        iniciarSetup();
     }
 
     public PecaXadrez[][] getPecas(){
@@ -19,5 +25,11 @@ public class PartidaXadrez {
         }
 
         return matriz;
+    }
+
+    private void iniciarSetup() {
+        tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.BRANCO), new Posicao(2, 1));
+        tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.PRETO), new Posicao(0, 4));
+        tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.BRANCO), new Posicao(7, 4));
     }
 }
