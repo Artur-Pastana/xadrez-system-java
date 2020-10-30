@@ -1,7 +1,5 @@
 package secao16.xadrez;
 
-import java.awt.Color;
-
 import secao16.boardgame.Posicao;
 import secao16.boardgame.Tabuleiro;
 import secao16.xadrez.pecas.Rei;
@@ -27,9 +25,16 @@ public class PartidaXadrez {
         return matriz;
     }
 
+    private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca){
+
+        tabuleiro.colocarPeca(peca, new XadrezPosicao(coluna, linha).toPosicao());
+    }
+
     private void iniciarSetup() {
-        tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.BRANCO), new Posicao(2, 1));
+        tabuleiro.colocarPeca(new Torre(tabuleiro, Cor.BRANCO), new Posicao(2, 1));//inserindo uma peca usando posicao de matriz
         tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.PRETO), new Posicao(0, 4));
-        tabuleiro.colocarPeca(new Rei(tabuleiro, Cor.BRANCO), new Posicao(7, 4));
+
+        colocarNovaPeca('e', 2, new Rei(tabuleiro, Cor.BRANCO));
+        colocarNovaPeca('b', 5, new Torre(tabuleiro, Cor.BRANCO));//inserindo uma peça usando posicao do tabuleiro
     }
 }
