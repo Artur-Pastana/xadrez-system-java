@@ -55,9 +55,9 @@ public class Tabuleiro {
         peca.posicao = posicao;
     }
 
-    // metodo para remover uma posicao do tabuleiro
+    // metodo para remover uma dada posicao do tabuleiro
     public Peca removerPeca(Posicao posicao) {
-        if (!posicaoExiste(posicao)) {
+        if (!posicaoExiste(posicao)) {//verifica se essa peça existe
             throw new TabuleiroException("Posição não existe no tabuleiro");
         }
         if (peca(posicao) == null) {
