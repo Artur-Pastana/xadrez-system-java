@@ -1,7 +1,11 @@
 package secao16.aplication;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import secao16.xadrez.Cor;
 import secao16.xadrez.PecaXadrez;
+import secao16.xadrez.XadrezPosicao;
 
 public class UI {
 
@@ -25,6 +29,19 @@ public class UI {
     public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+
+    public static XadrezPosicao lendoPosicaoXadrez(Scanner sc) {
+        try{
+            String s = sc.nextLine();
+            char coluna = s.charAt(0);
+            int linha = Integer.parseInt(s.substring(1));
+
+            return new XadrezPosicao(coluna, linha);
+        }
+        catch(RuntimeException runtimeException){
+            throw new InputMismatchException("erro ao ler xadrezPosicao: valores válidos são de a1 até h8");
+        }
+    }
 
     public static void printTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {

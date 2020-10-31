@@ -1,6 +1,8 @@
 package secao16.xadrez;
 
-public class XadrezException extends RuntimeException {
+import secao16.boardgame.TabuleiroException;
+
+public class XadrezException extends TabuleiroException {
 
     private static final long serialVersionUID = 1L;
 
