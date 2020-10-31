@@ -14,7 +14,16 @@ public class Torre extends PecaXadrez {
     public String toString() {
         return "R";
     }
+    /*a torre pode se mover na vertical quantas casa quiser e na horizontal quantas casas quiser
+    Enquanto houver casa livre
+    ou enquanto houver uma peça adversária, no caso ela pode capturar a peça adversária
+    */
 
+    @Override
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] mat = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
+        return mat;
+    }
 
     
 }
