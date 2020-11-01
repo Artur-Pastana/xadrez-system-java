@@ -2,7 +2,7 @@ package secao16.xadrez;
 
 import secao16.boardgame.Posicao;
 
-public class XadrezPosicao {
+public class XadrezPosicao  {
     private char coluna;
     private int linha;
 

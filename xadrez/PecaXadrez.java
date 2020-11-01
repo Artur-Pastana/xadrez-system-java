@@ -1,6 +1,7 @@
 package secao16.xadrez;
 
 import secao16.boardgame.Peca;
+import secao16.boardgame.Posicao;
 import secao16.boardgame.Tabuleiro;
 
 public abstract class PecaXadrez extends Peca {
@@ -14,6 +15,11 @@ public abstract class PecaXadrez extends Peca {
 
     public Cor getCor() {
         return cor;
+    }
+
+    protected boolean existePecaOponente(Posicao posicao){
+        PecaXadrez p = (PecaXadrez) getTabuleiro().peca(posicao);
+        return p != null && p.getCor() != this.cor;
     }
 
 }
