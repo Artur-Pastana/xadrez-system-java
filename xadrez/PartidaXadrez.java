@@ -1,5 +1,8 @@
 package secao16.xadrez;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import secao16.boardgame.Peca;
 import secao16.boardgame.Posicao;
 import secao16.boardgame.Tabuleiro;
@@ -11,6 +14,9 @@ public class PartidaXadrez {
     private int turno;
     private Cor jogadorAtual;
     private Tabuleiro tabuleiro;
+
+    private List<Peca> pecasDoTabuleiro = new ArrayList<>();
+    private List<Peca> pecasCapturadas = new  ArrayList<>();
 
     public int getTurno() {
         return turno;
@@ -82,14 +88,17 @@ public class PartidaXadrez {
     private Peca fazerMovimento(Posicao origem, Posicao destino) {
         Peca p = tabuleiro.removerPeca(origem);
         Peca pecaCapturada = tabuleiro.removerPeca(destino);
-
         tabuleiro.colocarPeca(p, destino);
+        if (pecaCapturada != null) {
+            this.pecasDoTabuleiro.remove(pecaCapturada);
+            this.pecasCapturadas.add(pecaCapturada);
+        }
         return pecaCapturada;
     }
 
     private void colocarNovaPeca(char coluna, int linha, PecaXadrez peca) {
-
         tabuleiro.colocarPeca(peca, new XadrezPosicao(coluna, linha).toPosicao());
+        this.pecasDoTabuleiro.add(peca);
     }
 
     private void iniciarSetup() {
