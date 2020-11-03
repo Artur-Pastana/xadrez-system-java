@@ -5,19 +5,16 @@ import secao16.boardgame.Tabuleiro;
 import secao16.xadrez.Cor;
 import secao16.xadrez.PecaXadrez;
 
-public class Rei extends PecaXadrez {
-    //o rei pode mover-se uma casa em qualquer das direções
+public class Cavalo extends PecaXadrez {
 
-	public Rei(Tabuleiro tabuleiro, Cor cor) {
-		super(tabuleiro, cor);
-		//TODO Auto-generated constructor stub
+    public Cavalo(Tabuleiro tabuleiro, Cor cor) {
+        super(tabuleiro, cor);
     }
-    
+
     @Override
     public String toString() {
-        return "K";
+        return "C";
     }
-
     private boolean podeMover(Posicao posicao) {
         PecaXadrez p = (PecaXadrez) getTabuleiro().peca(posicao);
 
@@ -26,66 +23,68 @@ public class Rei extends PecaXadrez {
 
     @Override
     public boolean[][] movimentosPossiveis() {
-        
         boolean[][] mat = new boolean[getTabuleiro().getLinhas()][getTabuleiro().getColunas()];
 
         Posicao p = new Posicao(0, 0);
-        //acima
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna());
+        
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 2);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //abaixo
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna());
+        
+        p.setValores(posicao.getLinha() - 2, posicao.getColuna() - 1);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //esquerda
-        p.setValores(posicao.getLinha(), posicao.getColuna() - 1);
+        
+        p.setValores(posicao.getLinha() - 2, posicao.getColuna() + 1);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //direita
-        p.setValores(posicao.getLinha(), posicao.getColuna() + 1);
+        
+        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 2);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //noroeste
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna() - 1);
+        
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 2);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //nordeste
-        p.setValores(posicao.getLinha() - 1, posicao.getColuna() + 1);
+        
+        p.setValores(posicao.getLinha() + 2, posicao.getColuna() + 1);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //sudoeste
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 1);
+        
+        p.setValores(posicao.getLinha() + 2, posicao.getColuna() - 1);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
 
-        //sudeste
-        p.setValores(posicao.getLinha() + 1, posicao.getColuna() + 1);
+        
+        p.setValores(posicao.getLinha() + 1, posicao.getColuna() - 2);
         if (getTabuleiro().posicaoExiste(p) && podeMover(p)) {
             mat[p.getLinha()][p.getColuna()] = true;
             
         }
         return mat;
     }
+
+    /*a movimentação do cavalo é sempre em todas as direções dois, um*/
+
     
 }
