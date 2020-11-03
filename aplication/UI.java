@@ -57,18 +57,26 @@ public class UI {
         System.out.println();
         mostrarPecaCapturada(capturada);
         System.out.println();
-        System.out.println("Turno: "+partidaXadrez.getTurno());
-        System.out.println("Esperando o jogador: "+partidaXadrez.getJogadorAtual());
-        if (partidaXadrez.getCheck()) {
-            System.out.println("CHECK!!");
+        System.out.println("Turno: " + partidaXadrez.getTurno());
+
+        if (!partidaXadrez.getCheckMate()) {
+            System.out.println("Esperando o jogador: " + partidaXadrez.getJogadorAtual());
+            if (partidaXadrez.getCheck()) {
+                System.out.println("CHECK!!");
+            }
         }
+        else{
+            System.out.println("CHECK MATE!");
+            System.out.println("Vencedor: "+partidaXadrez.getJogadorAtual());
+        }
+
     }
 
     public static void printTabuleiro(PecaXadrez[][] pecas) {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + "  ");
             for (int j = 0; j < pecas.length; j++) {
-                printPeca(pecas[i][j] , false);
+                printPeca(pecas[i][j], false);
             }
             System.out.println();
         }
@@ -80,7 +88,7 @@ public class UI {
         for (int i = 0; i < pecas.length; i++) {
             System.out.print((8 - i) + "  ");
             for (int j = 0; j < pecas.length; j++) {
-                printPeca(pecas[i][j] , possiveisMovimentos[i][j]);
+                printPeca(pecas[i][j], possiveisMovimentos[i][j]);
             }
             System.out.println();
         }
@@ -107,8 +115,10 @@ public class UI {
          * peca); }
          */
     }
+
     private static void mostrarPecaCapturada(List<PecaXadrez> capturada) {
-        List<PecaXadrez> brancas = capturada.stream().filter(x -> x.getCor() == Cor.BRANCO).collect(Collectors.toList());
+        List<PecaXadrez> brancas = capturada.stream().filter(x -> x.getCor() == Cor.BRANCO)
+                .collect(Collectors.toList());
         List<PecaXadrez> pretas = capturada.stream().filter(x -> x.getCor() == Cor.PRETO).collect(Collectors.toList());
 
         System.out.println("Peças capturadas: ");
@@ -121,6 +131,6 @@ public class UI {
         System.out.print(ANSI_YELLOW);
         System.out.println(Arrays.toString(pretas.toArray()));
         System.out.print(ANSI_RESET);
-        
+
     }
 }
