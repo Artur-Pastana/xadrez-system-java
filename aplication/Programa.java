@@ -5,13 +5,10 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import secao16.boardgame.Posicao;
-import secao16.boardgame.Tabuleiro;
 import secao16.xadrez.PartidaXadrez;
 import secao16.xadrez.PecaXadrez;
 import secao16.xadrez.XadrezException;
 import secao16.xadrez.XadrezPosicao;
-import secao16.xadrez.pecas.Rei;
 
 public class Programa {
     public static void main(String[] args) {
@@ -26,7 +23,7 @@ public class Programa {
             try {
 
                 UI.clearScreen();
-                //UI.printTabuleiro(partidaXadrez.getPecas());
+                // UI.printTabuleiro(partidaXadrez.getPecas());
                 UI.printPartida(partidaXadrez, capturada);
                 System.out.println();
                 System.out.print("origem: ");
@@ -42,20 +39,18 @@ public class Programa {
 
                 PecaXadrez pecaCapturada = partidaXadrez.executarMovimentoXadrez(origem, destino);
 
-                if (pecaCapturada != null ){
+                if (pecaCapturada != null) {
                     capturada.add(pecaCapturada);
                 }
-            } 
-            catch (XadrezException xadrezException) {
+            } catch (XadrezException xadrezException) {
                 System.out.println(xadrezException.getMessage());
                 sc.nextLine();
-            }
-            catch(InputMismatchException inputMismatchException){
+            } catch (InputMismatchException inputMismatchException) {
                 System.out.println(inputMismatchException.getMessage());
                 sc.nextLine();
             }
 
-        }//fim do while
+        } // fim do while
         UI.clearScreen();
         UI.printPartida(partidaXadrez, capturada);
         // System.out.println('c'-'a');
